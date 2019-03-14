@@ -1,0 +1,68 @@
+﻿@model MyCart.Models.Login
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyCart</h2>
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID, new { id = "hid" })
+
+        <div class="row row-no-gutters">
+            <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @tabindex = "1" })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @tabindex = "2" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-no-gutters">
+            <div class="input-group col-md-3">
+                <div class="col-sm-8">
+                    <a id="ForgotPassword" style="background-color:greenyellow;" href="">Forgot Password?</a>
+                </div>
+                <div class="col-sm-4">
+                    <input id="Login" type="submit" value="Login" class="btn btn-success" tabindex="3" />
+                </div>
+            </div>
+        </div>
+        <hr />
+        <br />
+        <div class="row row-no-gutters">
+            <div class="col-md-6">
+                <div class="col-md-2">
+                    <input type="submit" name="SignUp" value="SignUp!" class="btn btn-primary" tabindex="5" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    var hiddenID = 1;
+    
+    $(document).ready(function () {
+        $('#Login').click(function () {
+            $('#hid').val(hiddenID);
+        });
+    });
+</script>

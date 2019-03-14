@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @System.Web.Optimization.Styles.Render("~/Content/CSS")
+    @System.Web.Optimization.Scripts.Render("~/bundles/modernizr")
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")
+    @System.Web.Optimization.Scripts.Render("~/bundles/DeveloperJs")
+    @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
